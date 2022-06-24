@@ -1,6 +1,9 @@
 package com.bridgelabz.Spring.Jap.Entity.Mapping.model;
 import lombok.Data;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table
 public @Data class ClassData {
@@ -19,17 +22,15 @@ public @Data class ClassData {
         this.className =className;
         this.subjects = subjects;
     }
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_student")
-    @JoinTable(name = "CLASS_STUDENT", joinColumns = {@JoinColumn(name = "class_id")},
-                    inverseJoinColumns = {@JoinColumn(name = "student_id")})
-    private StudentData studentData;
+    @OneToMany(cascade = CascadeType.ALL)
 
-    public StudentData getStudentData() {
+    private List<StudentData> studentData=new ArrayList<>();
+
+    public List<StudentData> getStudentData() {
         return studentData;
     }
 
-    public void setStudentData(StudentData studentData) {
+    public void setStudentData(List<StudentData> studentData) {
         this.studentData = studentData;
     }
 }

@@ -22,11 +22,14 @@ public class SpringJapEntityMappingApplication implements CommandLineRunner {
 	}
 
 	public void run(String...args) throws Exception{
-		StudentData studentData= new StudentData("FRONTED","MECHANICAL");
 
 		ClassData classData= new ClassData("Backend","SpringBoot");
+		StudentData studentData1= new StudentData("FRONTED","MECHANICAL");
+		StudentData studentData2= new StudentData("fronted","Civil");
 
-		classData.setStudentData(studentData);
+
+		classData.getStudentData().add(studentData1);
+		classData.getStudentData().add(studentData2);
 		classDataRepository.save(classData);
 
 	}
