@@ -21,7 +21,8 @@ public @Data class ClassData {
     }
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_student")
-
+    @JoinTable(name = "CLASS_STUDENT", joinColumns = {@JoinColumn(name = "class_id")},
+                    inverseJoinColumns = {@JoinColumn(name = "student_id")})
     private StudentData studentData;
 
     public StudentData getStudentData() {
